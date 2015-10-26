@@ -1,0 +1,33 @@
+var onRun = function (context) {
+	var doc = context.document;
+	var layers = [[doc currentPage] children];
+
+	[[doc currentPage] deselectAllLayers]
+
+	var badLayers = 0;
+
+	for (var i = 0; i < [layers count]; i++) {
+		var layer = layers[i];
+		var x = [[layer frame] x];
+		var y = [[layer frame] y];
+		var w = [[layer frame] width];
+		var h = [[layer frame] height];
+
+		if (Math.floor(x) != x || Math.floor(y) != y || Math.floor(w) != w || Math.floor(h) != h) {
+			if ([layer name] != "Path") {
+				selection:[layer select:true byExpandingSelection:true];
+				badLayers++
+			}
+		}
+	}
+
+	if (badLayers > 0) {
+		if (badLayers == 1) {
+			[doc showMessage:"Selected " + badLayers + " imperfect layer."]
+		} else {
+			[doc showMessage:"Selected " + badLayers + " imperfect layers."]
+		}
+	} else {
+		[doc showMessage:"Looks like you're pixel perfect!"]
+	}
+}
