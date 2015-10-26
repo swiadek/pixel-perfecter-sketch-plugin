@@ -1,6 +1,6 @@
 # Pixel Perfecter
 
-This is a _very_ simple Sketch plugin that helps you find layers that have float (pixel imperfect) `X`, `Y`, `width` or `height` properties. It's will help you keep your documents cleaner, and keep your design specs tight.
+This is a _very_ simple Sketch plugin that helps you find layers that have float (pixel imperfect) `X`, `Y`, `width` or `height` properties. It will help you keep your documents cleaner, and keep your design specs tight.
 
 There are two functions available in the plugin:
 
