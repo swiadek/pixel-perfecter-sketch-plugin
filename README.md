@@ -14,7 +14,7 @@ The keyboard shortcut for this function is `⌥⌘P`
 
 ## Select One Pixel Imperfect Layer
 
-This will select only one pixel imperfect layer in your current document. It's helpful to quickly go through all the bad layers, dealing with them on an individual basis.
+This will select only one pixel imperfect layer in your current document. It's helpful to quickly go through all the bad layers, dealing with them on an individual basis. Calling up this function repedately will cycle through the bad layers.
 
 The keyboard shortcut for this function is `⌃⌥⌘P`
 
