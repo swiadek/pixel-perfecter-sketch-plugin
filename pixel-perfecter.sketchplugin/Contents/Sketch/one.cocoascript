@@ -20,19 +20,24 @@ var onRun = function (context) {
     
     for (var i = 0; i < badLayers.count(); i++) {
         if (selection.count() > 0) {
-            if (badLayers[i] == selection[0]) {
+            if (selection.containsObject(badLayers[i])) {
                 if (badLayers[i] == badLayers.lastObject()) {
-                    badLayers[0].select_byExpandingSelection(true,false);
+                    badLayers[0].select_byExpandingSelection(true,false)
                 } else {
-                    badLayers[i+1].select_byExpandingSelection(true,false);
+                    badLayers[i+1].select_byExpandingSelection(true,false)
                     print(badLayers[i+1])
                 }
                 doc.showMessage("Selected next imperfect layer.")
             }
         } else {
-            badLayers[0].select_byExpandingSelection(true,false);
+            badLayers[0].select_byExpandingSelection(true,false)
             doc.showMessage("Selected imperfect layer.")
         }
+    }
+    
+    if (!badLayers.containsObject(selection[0])) {
+        badLayers[0].select_byExpandingSelection(true,false)
+        doc.showMessage("Selected imperfect layer.")
     }
     
 	if (badLayers.count == 0) {
