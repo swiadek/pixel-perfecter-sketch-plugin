@@ -1,7 +1,7 @@
 {
   "name": "Pixel Perfecter",
   "description": "Plugin to find pixel imperfect layers in your document.",
-  "author": "Jakub Świadek, Vyacheslav Dubovitsky",
+  "author": "Jakub Świadek, Vyacheslav Dubovitsky, Vincent Esche",
   "homepage": "https://github.com/swiadek/pixel-perfecter-sketch-plugin",
   "version": 1.1,
   "identifier": "com.swiadek.sketch.pixel-perfecter",
@@ -19,12 +19,19 @@
       "identifier": "one",
       "shortcut": "cmd alt ctrl p",
       "script": "one.cocoascript",
+    },
+    {
+      "name": "Fix Selected Pixel Imperfect Layers…",
+      "identifier": "fix",
+      "shortcut": "cmd alt ctrl shift p",
+      "script": "fix.cocoascript",
     }
   ],
   "menu": {
     "items": [
       "all",
-      "one"
+      "one",
+      "fix"
     ]
   }
 }

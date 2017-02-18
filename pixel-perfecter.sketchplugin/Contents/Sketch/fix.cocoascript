@@ -1,0 +1,47 @@
+var onRun = function (context) {
+	var document = context.document
+  var selection = context.selection;
+
+	var alert = COSAlertWindow.new();
+  alert.setMessageText("Rounding granularity:");
+  alert.setInformativeText("Please choose the desired granularity (> 0.0):");
+  alert.addTextFieldWithValue("1.0");
+  alert.addButtonWithTitle("OK");
+  alert.addButtonWithTitle("Cancel");
+
+	while (true) {
+		var response_code = alert.runModal();
+		if (response_code != "1000") {
+			return;
+		}
+		var granularity = parseFloat(alert.viewAtIndex(0).stringValue());
+		if (isNaN(granularity) || (granularity == 0.0)) {
+			continue;
+		}
+		break;
+	}
+
+	var badLayers = 0;
+	for (var i = 0; i < selection.count(); i++) {
+		var layer = selection[i];
+		var frame = layer.frame().copy();
+		frame.x = Math.round(frame.x() / granularity) * granularity;
+		frame.y = Math.round(frame.y() / granularity) * granularity;
+		frame.width = Math.round(frame.width() / granularity) * granularity;
+		frame.height = Math.round(frame.height() / granularity) * granularity;
+		if (!layer.frame().isEqual(frame)) {
+			badLayers++;
+		}
+		layer.setFrame(frame);
+	}
+	
+	if (badLayers > 0) {
+		if (badLayers == 1) {
+			document.showMessage("Fixed " + badLayers + " imperfect layer.");
+		} else {
+			document.showMessage("Fixed " + badLayers + " imperfect layers.");
+		}
+	} else {
+		document.showMessage("Looks like you're pixel perfect!");
+	}
+}
