@@ -1,9 +1,10 @@
-var onRun = function (context) {
+function onRun(context) {
+
 	var doc = context.document
-    var selection = context.selection;
+	var selection = context.selection;
 	var layers = doc.currentPage().children()
-    var badLayers = NSMutableArray.array()
-    
+	var badLayers = NSMutableArray.array()
+
 	for (var i = 0; i < layers.count(); i++) {
 		var layer = layers[i];
 		var x = layer.frame().x();
@@ -12,35 +13,38 @@ var onRun = function (context) {
 		var h = layer.frame().height();
 
 		if (Math.floor(x) != x || Math.floor(y) != y || Math.floor(w) != w || Math.floor(h) != h) {
-            if (layer.name() != "Path") {
-                badLayers.addObject(layer)
-            }
+	        if (layer.name() != "Path") {
+	            badLayers.addObject(layer)
+	        }
 		}
 	}
-    
-    for (var i = 0; i < badLayers.count(); i++) {
-        if (selection.count() > 0) {
-            if (selection.containsObject(badLayers[i])) {
-                if (badLayers[i] == badLayers.lastObject()) {
-                    badLayers[0].select_byExpandingSelection(true,false)
-                } else {
-                    badLayers[i+1].select_byExpandingSelection(true,false)
-                    print(badLayers[i+1])
-                }
-                doc.showMessage("Selected next imperfect layer.")
-            }
-        } else {
-            badLayers[0].select_byExpandingSelection(true,false)
-            doc.showMessage("Selected imperfect layer.")
-        }
-    }
-    
-    if (!badLayers.containsObject(selection[0])) {
-        badLayers[0].select_byExpandingSelection(true,false)
-        doc.showMessage("Selected imperfect layer.")
-    }
-    
-	if (badLayers.count == 0) {
-        doc.showMessage("Looks like you're pixel perfect!")
+
+	for (var i = 0; i < badLayers.count(); i++) {
+	    if (selection.count() > 0) {
+	        if (selection.containsObject(badLayers[i])) {
+	            if (badLayers[i] == badLayers.lastObject()) {
+	                if (badLayers) {
+	                    badLayers[0].select_byExpandingSelection(true,false)
+	                }
+	            } else {
+	                badLayers[i+1].select_byExpandingSelection(true,false)
+	                print(badLayers[i+1])
+	            }
+	            doc.showMessage("Selected next imperfect layer.")
+	        }
+	    } else {
+	        badLayers[0].select_byExpandingSelection(true,false)
+	        doc.showMessage("Selected imperfect layer.")
+	    }
 	}
+
+	if (!badLayers.containsObject(selection[0])) {
+	    badLayers[0].select_byExpandingSelection(true,false)
+	    doc.showMessage("Selected imperfect layer.")
+	}
+
+	if (badLayers.count == 0 || !badLayers) {
+	    doc.showMessage("Looks like you're pixel perfect!")
+	}
+
 }

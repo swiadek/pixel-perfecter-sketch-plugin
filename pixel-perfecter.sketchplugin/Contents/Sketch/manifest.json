@@ -3,7 +3,7 @@
   "description": "Plugin to find pixel imperfect layers in your document.",
   "author": "Jakub Świadek, Vyacheslav Dubovitsky, Vincent Esche",
   "homepage": "https://github.com/swiadek/pixel-perfecter-sketch-plugin",
-  "version": 1.1,
+  "version": 1.2,
   "identifier": "com.swiadek.sketch.pixel-perfecter",
   "compatibleVersion": 3.4,
   "bundleVersion": 1,

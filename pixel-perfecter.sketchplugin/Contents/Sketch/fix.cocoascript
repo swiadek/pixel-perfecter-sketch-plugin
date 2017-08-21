@@ -1,13 +1,14 @@
-var onRun = function (context) {
+function onRun(context) {
+
 	var document = context.document
-  var selection = context.selection;
+	var selection = context.selection;
 
 	var alert = COSAlertWindow.new();
-  alert.setMessageText("Rounding granularity:");
-  alert.setInformativeText("Please choose the desired granularity (> 0.0):");
-  alert.addTextFieldWithValue("1.0");
-  alert.addButtonWithTitle("OK");
-  alert.addButtonWithTitle("Cancel");
+	alert.setMessageText("Rounding granularity:");
+	alert.setInformativeText("Please choose the desired granularity (> 0.0):");
+	alert.addTextFieldWithValue("1.0");
+	alert.addButtonWithTitle("OK");
+	alert.addButtonWithTitle("Cancel");
 
 	while (true) {
 		var response_code = alert.runModal();
@@ -34,7 +35,7 @@ var onRun = function (context) {
 		}
 		layer.setFrame(frame);
 	}
-	
+
 	if (badLayers > 0) {
 		if (badLayers == 1) {
 			document.showMessage("Fixed " + badLayers + " imperfect layer.");
@@ -44,4 +45,5 @@ var onRun = function (context) {
 	} else {
 		document.showMessage("Looks like you're pixel perfect!");
 	}
+
 }

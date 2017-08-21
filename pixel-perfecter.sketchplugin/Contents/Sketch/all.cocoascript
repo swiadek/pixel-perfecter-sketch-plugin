@@ -1,8 +1,14 @@
-var onRun = function (context) {
+function onRun(context) {
+
 	var doc = context.document;
 	var layers = [[doc currentPage] children];
+	var page = [doc currentPage];
 
-	[[doc currentPage] deselectAllLayers]
+	if (page.deselectAllLayers) {
+	    page.deselectAllLayers();
+	} else {
+	    page.changeSelectionBySelectingLayers_([]);
+	}
 
 	var badLayers = 0;
 
@@ -30,4 +36,5 @@ var onRun = function (context) {
 	} else {
 		[doc showMessage:"Looks like you're pixel perfect!"]
 	}
+
 }
