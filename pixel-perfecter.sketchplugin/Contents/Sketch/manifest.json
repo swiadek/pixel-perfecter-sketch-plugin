@@ -12,19 +12,19 @@
       "name": "Select All Pixel Imperfect Layers",
       "identifier": "all",
       "shortcut": "cmd alt p",
-      "script": "all.cocoascript",
+      "script": "all.cocoascript"
     },
     {
       "name": "Select One Pixel Imperfect Layer",
       "identifier": "one",
       "shortcut": "cmd alt ctrl p",
-      "script": "one.cocoascript",
+      "script": "one.cocoascript"
     },
     {
       "name": "Fix Selected Pixel Imperfect Layers…",
       "identifier": "fix",
       "shortcut": "cmd alt ctrl shift p",
-      "script": "fix.cocoascript",
+      "script": "fix.cocoascript"
     }
   ],
   "menu": {
