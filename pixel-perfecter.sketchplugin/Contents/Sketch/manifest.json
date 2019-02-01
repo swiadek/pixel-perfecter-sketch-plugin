@@ -28,6 +28,7 @@
     }
   ],
   "menu": {
+    "title": "Pixel Perfecter",
     "items": [
       "all",
       "one",
